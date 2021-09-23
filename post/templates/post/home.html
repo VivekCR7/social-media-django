@@ -1,15 +1,34 @@
 {% extends "post/base.html" %}
 
+{% load static %}
+
 {% block content%}
 
-{% load static %}
 {% for post in posts %}
+<div class="post">
     <div class="author-profile">
-        <h3>{{ post.author }}</h3>
+        <img class="rounded-circle fix-image" src="{{ post.author.profile.image.url }}">
+        <h3>@{{ post.author }}</h3>
+       
     </div>
 
-    <img src="{{ post.image.url }}" alt="" />
-    <p>{{ post.caption }}</p>
+    <img class = "post-image" src="{{ post.image.url }}" alt="" />
 
+    <div class="icons">
+        <i class = "fa fa-2x fa-heart-o"></i>
+        <i class="fa fa-2x fa-comment-o" aria-hidden="true"></i>
+    </div>
+    <p class="likes-count">1 likes</p>
+
+    <div class="comments">
+        <p class = "comment-context"> <span>{{ post.author }}</span> {{ post.caption }}</p>
+        <p class = "comment-context"> <span>{{ post.author }}</span> {{ post.caption }}</p>
+        <p class = "comment-context"> <span>{{ post.author }}</span> {{ post.caption }}</p>
+        <p class = "comment-context"> <span>{{ post.author }}</span> {{ post.caption }}</p>
+        <p class = "comment-context"> <span>{{ post.author }}</span> {{ post.caption }}</p>
+        <p class = "comment-context"> <span>{{ post.author }}</span> {{ post.caption }}</p>
+        <p class = "comment-context"> <span>{{ post.author }}</span> {{ post.caption }}</p>
+    </div>
+</div>
 {% endfor %}
 {% endblock content %}
