@@ -1,0 +1,41 @@
+{% extends "post/base.html" %}
+
+{% load static %}
+
+{% block content%}
+<div class="update-delete">
+{% if object.author == user %}
+    <a class = "btn btn-secondary btn-sm mt-1 mb-1"
+    href="{% url 'post-update' object.pk  %}">Update</a>
+    <a class = "btn btn-danger btn-sm mt-1 mb-1"
+    href="{% url 'post-delete' object.pk  %}">Delete</a>
+{% endif %}
+</div>
+
+<div class="post">
+    <div class="author-profile">
+        <img class="rounded-circle fix-image" src="{{ object.author.profile.image.url }}">
+        <h3><a href="">@{{ object.author }}</a></h3>
+       
+    </div>
+
+    <img class = "post-image" src="{{ object.image.url }}" alt="" />
+
+    <div class="icons">
+        <i class = "fa fa-2x fa-heart-o"></i>
+        <i class="fa fa-2x fa-comment-o" aria-hidden="true"></i>
+    </div>
+    <p class="likes-count">1 likes</p>
+
+    <div class="comments">
+        <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
+        <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
+        <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
+        <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
+        <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
+        <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
+        <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
+    </div>
+</div>
+
+{% endblock content %}

@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
 from django.utils import timezone
+from django.urls import reverse
 
 # Create your models here.
 class Post(models.Model):
@@ -22,3 +23,6 @@ class Post(models.Model):
             output_size = (600,600)
             img.thumbnail(output_size)
             img.save(self.image.path)
+
+    def get_absolute_url(self):
+        return reverse('post-detail',kwargs={'pk':self.pk})
