@@ -77,14 +77,10 @@ WSGI_APPLICATION = 'social_media_django.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       'NAME': 'social_media',
-       'USER': 'vivekcr7',
-       'PASSWORD': 'ronaldo',
-       'HOST': '',
-       'PORT': '',
-   }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
 
 
@@ -131,7 +127,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
 
 LOGIN_REDIRECT_URL = 'post-home'
 LOGIN_URL = 'login'
