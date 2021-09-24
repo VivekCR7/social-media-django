@@ -8,7 +8,7 @@
 <div class="post">
     <div class="author-profile">
         <img class="rounded-circle fix-image" src="{{ post.author.profile.image.url }}">
-        <h3>@{{ post.author }}</h3>
+        <h3><a href="{% url 'post-detail' post.id %}">@{{ post.author }}</a></h3>
        
     </div>
 
