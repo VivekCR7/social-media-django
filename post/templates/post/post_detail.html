@@ -22,13 +22,30 @@
     <img class = "post-image" src="{{ object.image.url }}" alt="" />
 
     <div class="icons">
-        <i class = "fa fa-2x fa-heart-o"></i>
-        <i class="fa fa-2x fa-comment-o" aria-hidden="true"></i>
+        <form action="{% url 'post-like' object.pk %}" method="POST">
+            {% csrf_token %}
+            {% if liked %}
+                <button class = "unstyled-button color" 
+                type="submit" name="post_id" value="{{ post.id }}">
+                    <i class = "fa fa-2x fa-heart"></i>
+                </button>
+            {% else %}
+                <button class = "unstyled-button" 
+                type="submit" name="post_id" value="{{ post.id }}">
+                    <i class = "fa fa-2x fa-heart-o"></i>
+                </button>
+            {% endif %}
+     
+
+        </form>
+        <!-- <i class="fa fa-2x fa-comment-o" aria-hidden="true"></i> -->
     </div>
-    <p class="likes-count">1 likes</p>
+    <p class="likes-count">{{ total_likes }} likes</p>
+
+    {% load mptt_tags %}
 
     <div class="comments">
-        <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
+         <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
         <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
         <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
         <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
