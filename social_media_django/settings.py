@@ -22,9 +22,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = "bb776b6d2f96f4cc60a7196cc808677b8b1faf9d3ced51fd"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
+# DEBUG = True
 
 ALLOWED_HOSTS = ['vivek-photogram.herokuapp.com']
 
@@ -35,6 +37,7 @@ INSTALLED_APPS = [
     'user',
     'post',
     'crispy_forms',
+    'mptt',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
