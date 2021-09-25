@@ -28,22 +28,6 @@ class PostListView(ListView):
     template_name = 'post/home.html'
     ordering = ['-date_posted']
     context_object_name = 'posts'
-
-    # def get_context_data(self, *args, **kwargs):
-    #     context = super(PostListView, self).get_context_data(**kwargs)
-
-    #     stuff = get_object_or_404(Post,id = self.args['pk'])
-    #     total = stuff.total_likes()
-
-    #     liked = False
-    #     if stuff.like.filter(id = self.request.user.id).exists():
-    #         liked = True
-
-    #     context['total_likes'] = total
-    #     context['liked']  = liked
-    #     context['posts'] = Post.objects.all()
-
-    #     return context
     
 class PostDetailView(DetailView):
     model = Post
