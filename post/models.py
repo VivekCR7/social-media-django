@@ -20,15 +20,15 @@ class Post(models.Model):
     def __str__(self):
         return f'{self.author}'
 
-    def save(self):
-        super().save()
+    # def save(self):
+    #     super().save()
 
-        img = Image.open(self.image.path)
+    #     img = Image.open(self.image.path)
 
-        if img.height > 600 or img.width > 600:
-            output_size = (600, 600)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+    #     if img.height > 600 or img.width > 600:
+    #         output_size = (600, 600)
+    #         img.thumbnail(output_size)
+    #         img.save(self.image.path)
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
