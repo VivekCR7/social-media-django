@@ -1,57 +1,65 @@
 {% extends "post/base.html" %}
 
 {% load static %}
-
+{% load crispy_forms_tags %}
 {% block content%}
 <div class="update-delete">
-{% if object.author == user %}
+{% if post.author == user %}
     <a class = "btn btn-secondary btn-sm mt-1 mb-1"
-    href="{% url 'post-update' object.pk  %}">Update</a>
+    href="{% url 'post-update' post.pk  %}">Update</a>
     <a class = "btn btn-danger btn-sm mt-1 mb-1"
-    href="{% url 'post-delete' object.pk  %}">Delete</a>
+    href="{% url 'post-delete' post.pk  %}">Delete</a>
 {% endif %}
 </div>
 
 <div class="post">
     <div class="author-profile">
-        <img class="rounded-circle fix-image" src="{{ object.author.profile.image.url }}">
-        <h3><a href="">@{{ object.author }}</a></h3>
+        <img class="rounded-circle fix-image" src="{{ post.author.profile.image.url }}">
+        <h3><a href="">@{{ post.author }}</a></h3>
        
     </div>
 
-    <img class = "post-image" src="{{ object.image.url }}" alt="" />
+    <img class = "post-image" src="{{ post.image.url }}" alt="" />
 
     <div class="icons">
-        <form action="{% url 'post-like' object.pk %}" method="POST">
-            {% csrf_token %}
-            {% if liked %}
-                <button class = "unstyled-button color" 
-                type="submit" name="post_id" value="{{ post.id }}">
-                    <i class = "fa fa-2x fa-heart"></i>
-                </button>
-            {% else %}
-                <button class = "unstyled-button" 
-                type="submit" name="post_id" value="{{ post.id }}">
-                    <i class = "fa fa-2x fa-heart-o"></i>
-                </button>
-            {% endif %}
-     
-
-        </form>
-        <!-- <i class="fa fa-2x fa-comment-o" aria-hidden="true"></i> -->
+        <div class="heart-icon">
+            <form action="{% url 'post-like' post.pk %}" method="POST">
+                {% csrf_token %}
+                {% if liked %}
+                    <button class = "unstyled-button color" 
+                    type="submit" name="post_id" value="{{ post.id }}">
+                        <i class = "fa fa-2x fa-heart"></i>
+                    </button>
+                {% else %}
+                    <button class = "unstyled-button" 
+                    type="submit" name="post_id" value="{{ post.id }}">
+                        <i class = "fa fa-2x fa-heart-o"></i>
+                    </button>
+                {% endif %}
+            </form>
+        </div>
+        <button id = "comment-btn" class = "unstyled-button" type="submit">
+            <i class = "fa fa-2x fa-comment-o"></i>
+        </button>
     </div>
     <p class="likes-count">{{ total_likes }} likes</p>
-
-    {% load mptt_tags %}
-
-    <div class="comments">
-         <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
-        <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
-        <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
-        <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
-        <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
-        <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
-        <p class = "comment-context"> <span>{{ object.author }}</span> {{ object.caption }}</p>
+    
+    <h5>Add Comment</h5>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ comment_form|crispy }}
+        <button type="submit" class="btn btn-primary">Comment</button>
+    </form>
+    
+    <div class="comment-form">
+    {% if not post.comments.all %}
+        No comments yet
+    
+    {% else %}
+        {% for comment in post.get_comments %}
+            {% include 'post/comment.html' with comment=comment %}
+        {% endfor %}
+    {% endif %}
     </div>
 </div>
 
