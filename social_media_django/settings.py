@@ -25,8 +25,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECRET_KEY = "bb776b6d2f96f4cc60a7196cc808677b8b1faf9d3ced51fd"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
-# DEBUG = True
+# DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
+DEBUG = True
 
 ALLOWED_HOSTS = ['vivek-photogram.herokuapp.com']
 
@@ -81,16 +81,15 @@ WSGI_APPLICATION = 'social_media_django.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       'NAME': 'social_media',
-       'USER': 'vivekcr7',
-       'PASSWORD': 'ronaldo',
-       'HOST': '',
-       'PORT': '',
-   }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'photogram',
+        'USER': 'vivekcr7',
+        'PASSWORD': 'ronaldo',
+        'HOST': '',
+        'PORT': '',
+    }
 }
-
 
 
 # Password validation
@@ -130,7 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
