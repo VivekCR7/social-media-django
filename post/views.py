@@ -126,6 +126,12 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
+def CommentDeleteView(request,pk):
+    comment = Comment.objects.get(id = pk)
+    post_id = comment.post.id
+    comment.delete()
+    return redirect(reverse('post-detail', args=[post_id]))
+
 
 @login_required
 def Like(request, pk):

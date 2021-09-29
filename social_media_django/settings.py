@@ -22,8 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = os.environ.get('SECRET_KEY')
-SECRET_KEY = "bb776b6d2f96f4cc60a7196cc808677b8b1faf9d3ced51fd"
-
+SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 DEBUG = True
@@ -149,9 +148,9 @@ LOGIN_URL = 'login'
 
 
 # setup aws s3 bucket
-AWS_ACCESS_KEY_ID = "AKIAWZJFKQFUDLCFVE7R"
-AWS_SECRET_ACCESS_KEY = "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"
-AWS_STORAGE_BUCKET_NAME = "vivek-photogram-media"
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
