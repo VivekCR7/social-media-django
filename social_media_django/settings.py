@@ -139,12 +139,13 @@ LOGIN_REDIRECT_URL = 'post-home'
 LOGIN_URL = 'login'
 
 # configure email setup
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = ""
-# EMAIL_HOST_PASSWORD = ""
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+print(EMAIL_HOST_USER,EMAIL_HOST_PASSWORD)
 
 
 # setup aws s3 bucket
