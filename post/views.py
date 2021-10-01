@@ -92,7 +92,7 @@ def reply_page(request):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['image', 'caption']
+    fields = ['image', 'video', 'caption']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
