@@ -22,7 +22,19 @@
         </div>
         <!-- FORM HERE -->
     </div>
-    <input type="button" value="Update" id ="update-btn" class="button">
+    
+    <div class="center center-grid">
+        <div class = "left">
+        <input class="btn btn-outline-info"
+        type="button" value="Update" id ="update-btn" class="button">
+        </div>
+        <div class = "right">
+        <a href="{% url 'logout' %}">
+            <button class="btn btn-outline-danger" type="submit">Logout</button>
+        </a>
+        </div>
+    </div>
+    
     <div id = "update-form" class="center-form">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
