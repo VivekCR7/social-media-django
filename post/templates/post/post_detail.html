@@ -68,6 +68,10 @@
         </button>
     </div>
     <p class="likes-count">{{ total_likes }} likes</p>
+
+    <div class="comments">
+        <p class = "comment-context"><span>@{{ post.author }}</span> {{ post.caption }}</p>
+    </div>
     
     <h5>Add Comment</h5>
     <form method="post" action="">
