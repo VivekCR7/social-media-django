@@ -9,7 +9,8 @@ from django.urls import reverse
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='post_pics')
+    image = models.ImageField(upload_to='post_pics',blank=True)
+    video = models.FileField(upload_to='videos',blank=True)
     caption = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     like = models.ManyToManyField(User, related_name='post_like')
@@ -19,16 +20,6 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.author}'
-
-    # def save(self):
-    #     super().save()
-
-    #     img = Image.open(self.image.path)
-
-    #     if img.height > 600 or img.width > 600:
-    #         output_size = (600, 600)
-    #         img.thumbnail(output_size)
-    #         img.save(self.image.path)
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
