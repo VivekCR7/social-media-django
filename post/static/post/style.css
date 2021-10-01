@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
+
 body {
   background: #fafafa;
   color: #333333;
@@ -135,15 +137,14 @@ a.article-title:hover {
   height: 6vh;
 }
 
-.icons > i{
-  padding-top: 8px;
-  padding-left: 10px
+.icons > a{
+  text-decoration: none;
 }
 
-.icons > i:hover{
+.icons > a > i{
   padding-top: 8px;
   padding-left: 10px;
-  color: red;
+  color: black;
 }
 
 .unstyled-button {
@@ -165,8 +166,7 @@ a.article-title:hover {
 }
 
 .comments{
-  height: 15vh;
-  overflow: scroll;
+  height: 5vh;
 }
 
 .comment-context{
@@ -306,4 +306,113 @@ a.article-title:hover {
   overflow: scroll;
 }
 
+/* slider */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
 
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  text-decoration: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* header */
+
+.grid{
+  display: grid;
+  grid-template-columns: 5fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.second > a{
+  font-size: 26px;
+}
+
+.first{
+  grid-column: 2;
+  justify-self: flex-end;
+}
+
+.second{
+  grid-column: 1;
+  font-family: 'Oleo Script', cursive;;
+}
+
+.third{
+  grid-column: 3;
+  justify-self: flex-start;
+}
+
+@media screen and (min-width:100px) and (max-width:768px) {
+  header{
+    height: 7vh;
+  }
+  .grid{
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .first{
+    grid-column: 1;
+    position: relative;
+    top: 30px;
+  }
+
+  .second{
+    grid-column: 2;
+    grid-row: 2;
+    position: relative;
+    top: -15px;
+  }
+
+  .third{
+    grid-column: 3;
+    position: relative;
+    top: 30px;
+  }
+  
+}
+
+.left, .right{
+  display: inline-block;
+}
+
+.center-grid{
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+
+.right{
+  justify-self: end;
+}
