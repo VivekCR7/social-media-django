@@ -12,4 +12,4 @@ class CommentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(CommentForm, self).__init__(*args, **kwargs)
         self.fields['content'].widget.attrs = {
-            'placeholder': 'Comment here...', 'class': 'form-control', 'rows': '5'}
+            'placeholder': 'Post Comment', 'class': 'form-control', 'rows': '1'}
