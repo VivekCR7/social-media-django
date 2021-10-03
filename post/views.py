@@ -101,7 +101,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['image', 'caption']
+    fields = ['image', 'video', 'caption']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
