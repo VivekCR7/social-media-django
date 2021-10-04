@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from django.contrib.auth.models import User
 
 def register(request):
     if request.method == 'POST':
@@ -39,3 +40,13 @@ def profile(request):
     }
 
     return render(request, 'user/profile.html',context)
+
+def delete(request):
+    user_id = request.user.id
+    profile = User.objects.get(id = user_id)
+    
+    if request.method == "POST":
+        profile.delete()
+        return redirect('login')
+
+    return render(request,'user/delete_user.html')
